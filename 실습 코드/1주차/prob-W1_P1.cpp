@@ -17,6 +17,11 @@ public:
         arr = new int[size] { 0, };
     }
 
+    // 소멸자 함수
+    ~Array(){
+        delete[] arr; // 동적으로 할당한 배열 해제
+    }
+
     // 특정 인덱스에 접근해 해당하는 원소를 반환
     void at(int idx) {
         cout << arr[idx] << '\n';
