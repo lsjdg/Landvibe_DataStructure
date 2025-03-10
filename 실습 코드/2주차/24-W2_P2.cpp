@@ -3,63 +3,63 @@ using namespace std;
 
 class Node {
 public:
-	int value;
-	Node* next;
+    int value;
+    Node* next;
 
-	Node() {
-		this->value = 0;
-		this->next = nullptr;
-	}
+    Node() {
+        this->value = 0;
+        this->next = nullptr;
+    }
 };
 
 class SinglyLinkedList {
 public:
-	Node* head;
-	Node* tail;
-	int size;
+    Node* head;
+    Node* tail;
+    int size;
 
-	SinglyLinkedList() {
-		head = new Node();
-		tail = new Node();
-		head->next = tail;
-		size = 0;
-	}
+    SinglyLinkedList() {
+        head = new Node();
+        tail = new Node();
+        head->next = tail;
+        size = 0;
+    }
 
-	void Print() {
-		if (size == 0) 
-			cout << "empty" << '\n';
-		else {
-			Node* curNode = head->next;
+    void Print() {
+        if (size == 0)
+            cout << "empty" << '\n';
+        else {
+            Node* curNode = head->next;
 
-			for (int i{ 0 }; i < size; i++) {
-			cout << curNode->value << ' ';
-			curNode = curNode->next;
-			}
-			cout << '\n';
-		}
-	}
+            for (int i{ 0 }; i < size; i++) {
+                cout << curNode->value << ' ';
+                curNode = curNode->next;
+            }
+            cout << '\n';
+        }
+    }
 
-	void Append(int x) {
-		Node* newNode = new Node();
-		newNode->value = x;
-		Node* curNode = head;
-		for (int i{ 0 }; i < size; i++) {
-			curNode = curNode->next;
-		}
-		newNode->next = tail;
-		curNode->next = newNode;
-		size++;
-	}
-	
-	void InsertBefore(int e, int v) {
+    void Append(int x) {
+        Node* newNode = new Node();
+        newNode->value = x;
+        Node* curNode = head;
+        for (int i{ 0 }; i < size; i++) {
+            curNode = curNode->next;
+        }
+        newNode->next = tail;
+        curNode->next = newNode;
+        size++;
+    }
+
+    void InsertBefore(int e, int v) {
         Node* newNode = new Node();
         newNode->value = v;
-        
-        
+
+
         Node* curNode = head;
-        while (curNode->next != nullptr && curNode->next->value != e) 
+        while (curNode->next != nullptr && curNode->next->value != e)
             curNode = curNode->next;
-        
+
         if (curNode->next != nullptr) {
             newNode->next = curNode->next;
             curNode->next = newNode;
@@ -68,22 +68,24 @@ public:
     }
 
     SinglyLinkedList Merge(SinglyLinkedList& other) {
-        Node* curNode = other.head->next; 
-        while (curNode != other.tail) { 
-            this->Append(curNode->value); 
-            curNode = curNode->next; 
+        Node* curNode = this->head;
+        while (curNode->next != this->tail){
+            curNode = curNode->next;
         }
-        return *this; 
+        curNode->next = other.head->next;
+        this-> size += other.size;
+
+        return *this;
     }
 };
 
 int main() {
-	int test;
-	cin >> test;
+    int test;
+    cin >> test;
 
-	while (test--) {
+    while (test--) {
         SinglyLinkedList L1, L2, Lmerge;
-        
+
         int n1;
         cin >> n1;
 
@@ -106,10 +108,10 @@ int main() {
 
         Lmerge = L1.Merge(L2);
         Lmerge.Print();
-        
+
         int e, v;
         cin >> e >> v;
-        
+
         Lmerge.InsertBefore(e, v);
         Lmerge.Print();
     }
