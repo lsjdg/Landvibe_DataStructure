@@ -99,7 +99,7 @@ public:
             int max = curNode->value;
 
             // 최댓값을 구하기 위해 순회
-            while (curNode->next != this->tail) {
+            while (curNode != this->tail) {
                 if (max < curNode->value)
                     max = curNode->value;
                 curNode = curNode->next;

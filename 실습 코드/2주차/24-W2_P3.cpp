@@ -81,7 +81,7 @@ public:
 
 			int min = curNode->value;
 
-			while (curNode->next != nullptr) {
+			while (curNode != nullptr) {
 				if (curNode->value < min) 
 					min = curNode->value;
 				curNode = curNode->next;
