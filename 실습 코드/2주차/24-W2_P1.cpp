@@ -10,10 +10,6 @@ public:
         this->value = 0; // 기본값을 0으로 설정
         this->next = nullptr;
     }
-
-    ~Node() {
-        delete next;  // next가 가리키는 동적 메모리도 삭제
-    }
 };
 
 class SinglyLinkedList {
@@ -29,11 +25,7 @@ public:
         head->next = tail; // head 와 tail 연결
         size = 0;
     }
-
-    ~SinglyLinkedList(){
-        delete head;  // 연결 리스트의 첫 번째 노드부터 순차적으로 삭제
-    }
-
+    
     // : head에서 tail 방향으로 리스트를 순회하며 각 노드에 저장된 자연수를 출력
     void Print() {
         if (size == 0)
