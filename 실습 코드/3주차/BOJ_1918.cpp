@@ -81,19 +81,16 @@ public:
     }
 };
 
+// 입력값이 연산자임을 판별
 bool isOper(char c)
 {
-    if (c == '+' || c == '-' || c == '*' || c == '/')
-        return true;
-    else
-        return false;
+    return (c == '+' || c == '-' || c == '*' || c == '/');
 }
+
+// 입력값이 숫자(알파벳)임을 판별
 bool isNum(char c)
 {
-    if (c >= 65 && c <= 90)
-        return true;
-    else
-        return false;
+    return (c >= 65 && c <= 90); // 아스키코드 이용 ('A' -> 65, 'Z' -> 90)
 }
 
 int main()
@@ -112,11 +109,9 @@ int main()
             s.push(c);
         else if (c == ')')
         {
-            while (isOper(s.top()))
-            {
+            while (isOper(s.top())) {
                 cout << s.top();
                 s.pop();
-                c = s.top();
             }
             s.pop();
         }
@@ -128,7 +123,7 @@ int main()
                     if (s.isEmpty())
                         break;
 
-                    if (s.top() == '+' || s.top() == '-' || s.top() == '*' || s.top() == '/')
+                    if (isOper(s.top()))
                     {
                         cout << s.top();
                         s.pop();
