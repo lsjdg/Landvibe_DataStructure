@@ -102,28 +102,19 @@ int main() {
                 cout << 0 << '\n';
         }
         else if (str == "top") {
-            if (st.isEmpty())
-                cout << -1 << '\n';
-            else
-                cout << st.top() << '\n';
+            cout << st.top() << '\n';
         }
         else if (str == "push") {
             int x;
             cin >> x;
 
-            if (st.full())
-                cout << "FULL\n";
-            else
-                st.push(x);
+            st.push(x);
         }
         else if (str == "popsum") {
             int s;
             cin >> s;
 
-            if (st.isEmpty())
-                cout << -1 << '\n';
-            else
-                st.popsum(s);
+            st.popsum(s);
         }
     }
 }
