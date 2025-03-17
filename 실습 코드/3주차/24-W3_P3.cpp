@@ -4,8 +4,6 @@
 #include <iostream>
 using namespace std;
 
-int t;
-
 class Node {
 public:
     int value;
@@ -72,24 +70,28 @@ public:
     }
 
     void push(int x){
-        if (ll.size >= t){
-            cout << "FULL\n";
-            return;
-        }
         ll.Append(x);
     }
 
-    void pop(){
-        if (isEmpty()){
+    void pop(int S) {
+        if (isEmpty()) {
+            cout << -1 << '\n';
             return;
         }
-        ll.Delete();
+        if (S > ll.size){
+            S = ll.size;
+        }
+        for (int i{ 0 }; i < S; i++) {
+            cout << top() << " ";
+            ll.Delete();
+        }
+        cout << '\n';
     }
 };
 
 int main() {
     int N;
-    cin >> t >> N;
+    cin >> N;
     Stack st = Stack();
 
     while (N--) {
@@ -110,6 +112,10 @@ int main() {
             cin >> x;
 
             st.push(x);
+        } else if (str == "pop"){
+            int S;
+            cin >> S;
+            st.pop(S);
         }
     }
 }
