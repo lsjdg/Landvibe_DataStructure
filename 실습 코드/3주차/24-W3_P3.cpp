@@ -85,23 +85,6 @@ public:
         }
         ll.Delete();
     }
-
-    int popsum(int S){
-        if (isEmpty()){
-            return -1;
-        }
-        int sum = 0;
-        if (S > ll.size){
-            S = ll.size;
-        }
-
-        while (S--){
-            sum += top();
-            pop();
-        }
-
-        return sum;
-    }
 };
 
 int main() {
@@ -120,21 +103,13 @@ int main() {
                 cout << 1 << '\n';
             else
                 cout << 0 << '\n';
-        }
-        else if (str == "top") {
+        } else if (str == "top") {
             cout << st.top() << '\n';
-        }
-        else if (str == "push") {
+        } else if (str == "push") {
             int x;
             cin >> x;
 
             st.push(x);
-        }
-        else if (str == "popsum") {
-            int s;
-            cin >> s;
-
-            cout << st.popsum(s) << '\n';
         }
     }
 }
