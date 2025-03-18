@@ -81,7 +81,7 @@ int main() {
 		Stack s = Stack();
         maxSize = 0;
 
-		for (int i{ 0 }; i < str.size(); i++) {		
+		for (int i = 0; i < str.size(); i++) {
 			char c = str[i];
 
 			if (!isOper(c)) 

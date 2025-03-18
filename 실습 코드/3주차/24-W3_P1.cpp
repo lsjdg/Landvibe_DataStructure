@@ -10,10 +10,12 @@ class Stack {
 public:
     int* arr; // 배열을 이용한 구현
     int size; // 스택에 저장된 원소의 갯수
+    int front; // top 의 index
 
     Stack() {
         arr = new int[t];
         size = 0;
+        front = -1;
     }
 
     // 스택의 크기 반환
@@ -35,7 +37,7 @@ public:
     int top() {
         if (isEmpty()) // 스택이 비어있는 경우 예외처리
             return -1;
-        return arr[this->size];
+        return arr[this->front];
     }
 
     // 스택에 원소를 삽입
@@ -44,40 +46,33 @@ public:
             cout << "FULL\n";
             return;
         }
+        this->front++;
+        arr[this->front] = x;
         this->size++;
-        arr[this->size] = x;
-        size++;
     }
 
     // 스택의 맨 위 원소를 삭제
     void pop() {
         if (isEmpty()) // 스택이 비어있는 경우 예외처리
             return;
+        this->front--;
         this->size--;
-        size--;
     }
 
     // 스택의 위쪽에 있는 s 개의 원소를 합하고 pop
     void popsum(int s) {
-        if (isEmpty()){
-            cout << "-1\n";
+        if (isEmpty())
+            return;
+        if (s > size) {
+            s = size;
         }
-        else if (s > size) {
-            int sum{ 0 };
-            while (!isEmpty()) {
-                sum += top();
-                pop();
-            }
-            cout << sum << '\n';
+
+        int sum = 0;
+        for (int i = 0; i < s; i++) {
+            sum += top();
+            pop();
         }
-        else {
-            int sum{ 0 };
-            for (int i{ 0 }; i < s; i++) {
-                sum += top();
-                pop();
-            }
-            cout << sum << '\n';
-        }
+        cout << sum << '\n';
     }
 };
 

@@ -81,7 +81,7 @@ public:
         if (S > ll.size){
             S = ll.size;
         }
-        for (int i{ 0 }; i < S; i++) {
+        for (int i = 0; i < S; i++) {
             cout << top() << " ";
             ll.Delete();
         }

@@ -12,7 +12,7 @@ public:
     Stack() {
         arr = new int[t];
         size = 0;
-        f = 0;
+        f = -1;
     }
 
     int getSize() {
