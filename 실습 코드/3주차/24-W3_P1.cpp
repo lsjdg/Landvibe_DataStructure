@@ -9,13 +9,11 @@ int t; // 배열의 크기를 전역으로 선언
 class Stack {
 public:
     int* arr; // 배열을 이용한 구현
-    int front; // front 의 index
     int size; // 스택에 저장된 원소의 갯수
 
     Stack() {
         arr = new int[t];
         size = 0;
-        front = 0;
     }
 
     // 스택의 크기 반환
@@ -37,7 +35,7 @@ public:
     int top() {
         if (isEmpty()) // 스택이 비어있는 경우 예외처리
             return -1;
-        return arr[this->front];
+        return arr[this->size];
     }
 
     // 스택에 원소를 삽입
@@ -46,8 +44,8 @@ public:
             cout << "FULL\n";
             return;
         }
-        this->front++;
-        arr[this->front] = x;
+        this->size++;
+        arr[this->size] = x;
         size++;
     }
 
@@ -55,7 +53,7 @@ public:
     void pop() {
         if (isEmpty()) // 스택이 비어있는 경우 예외처리
             return;
-        this->front--;
+        this->size--;
         size--;
     }
 
