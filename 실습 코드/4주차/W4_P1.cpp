@@ -46,16 +46,20 @@ public:
         size++;
     }
 
-    int dequeue() {
+    void dequeue() {
         if (empty()){
-            return -1;
+            cout << "Empty\n";
+            return;
         }
         Node* delNode = head->next;
         head->next = delNode->next;
-        int deleted = delNode->value;
+        cout << delNode->value << '\n';
         delete delNode;
         size--;
-        return deleted;
+
+        if (size == 0){
+            tail = head;
+        }
     }
 
     void frontNsum(int x) {
@@ -68,9 +72,10 @@ public:
             return;
         }
         int sum = 0;
-        for (int i = 0; i<x; i++){
-            sum += front();
-            dequeue();
+        Node* curNode = head->next;
+        while (x--){
+            sum += curNode->value;
+            curNode = curNode->next;
         }
         cout << sum << '\n';
     }
@@ -113,10 +118,7 @@ int main() {
             q.enqueue(x);
         }
         else if (str == "dequeue") {
-            if (q.empty())
-                cout << "Empty\n";
-            else
-                cout << q.dequeue() << '\n';
+            q.dequeue();
         }
     }
 }

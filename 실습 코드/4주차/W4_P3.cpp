@@ -31,11 +31,11 @@ public:
             return -1;
 
         int sum = 0;
+        int idx = r;
 
         while (n--){
-            int idx = r;
             sum += arr[idx];
-            r--;
+            idx = (idx - 1) % maxSize;
         }
 
         return sum;
