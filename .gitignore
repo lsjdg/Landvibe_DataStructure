@@ -32,6 +32,8 @@
 *.app
 *.iml
 CMakeLists.txt
+main
+main.cpp
 
 # macOS system files
 .DS_Store
