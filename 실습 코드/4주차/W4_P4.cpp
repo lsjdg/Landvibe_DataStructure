@@ -54,6 +54,10 @@ public:
         head->next = delNode->next;
         delete delNode;
         size--;
+
+        if (size == 0){
+            tail = head;
+        }
     }
 };
 
