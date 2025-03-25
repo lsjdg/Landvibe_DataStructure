@@ -30,6 +30,7 @@
 *.exe
 *.out
 *.app
+*.iml
 CMakeLists.txt
 
 # macOS system files
