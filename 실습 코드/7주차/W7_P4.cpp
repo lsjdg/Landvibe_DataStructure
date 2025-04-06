@@ -2,9 +2,6 @@
 #include <vector>
 using namespace std;
 
-int sum;
-string fd;
-
 class Node {
 public:
     Node* parent;
@@ -48,18 +45,18 @@ public:
         nodeList.push_back(newNode);
     }
 
-    void preOrder(Node* node, int target) {
-        if (node->value == target) {
-            fd = node->childList.size() != 0 ? "F " : "D ";
-            Node* temp = node->parent;
+    void parentSum(Node* node) {
+        int sum = 0;
+        char type;
+        type = node->childList.size() != 0 ? 'F' : 'D';
+        Node* temp = node->parent;
 
-            while (temp != nullptr) {
-                sum += temp->value;
-                temp = temp->parent;
-            }
+        while (temp != nullptr) {
+            sum += temp->value;
+            temp = temp->parent;
         }
-        for (auto n : node->childList)
-            preOrder(n, target);
+
+        cout << type << " " << sum << '\n';
     }
 };
 
@@ -79,10 +76,8 @@ int main() {
     while (test--) {
         int target;
         cin >> target;
-        sum = 0;
+        Node* targetNode = t.find(target);
 
-        t.preOrder(t.root, target);
-
-        cout << fd << sum << '\n';
+        t.parentSum(targetNode);
     }
 }
